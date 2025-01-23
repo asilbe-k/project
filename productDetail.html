@@ -1,0 +1,33 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Товар</title>
+     
+    </head>
+    <body>
+        <div class="container">
+            <h1>Товар: <span id="nomi"></span></h1>
+            <img id="rasmi" src="" alt="Фото товара">
+            <button  class="back-button" onclick="window.history.back()">Вернуться</button>
+        </div>
+
+        <script src="./db.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", (e) => {
+                let urlString = window.location.search;
+                let urlParams = new URLSearchParams(urlString);
+                let id = urlParams.get("id");
+                let product = phones.find(t => t.id == id);
+                console.log(product);
+
+                let nomi = document.querySelector("#nomi");
+                nomi.innerHTML = product.nomi;
+
+                let rasm = document.querySelector("#rasmi");
+                rasm.src = product.rasmi;
+            });
+        </script>
+    </body>
+    </html>
